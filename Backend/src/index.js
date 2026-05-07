@@ -1,0 +1,43 @@
+const express = require('express');
+const mongoose = require('mongoose');
+const cors = require('cors');
+const dotenv = require('dotenv');
+
+// Cargar variables de entorno (clave para seguridad)
+dotenv.config();
+
+const app = express();
+const PORT = process.env.PORT || 5000;
+
+// Middleware básico para recibir JSON y archivos
+app.use(cors()); // Permite que el Frontend hable con el Backend
+app.use(express.json()); // Para leer datos en formato JSON
+app.use(express.urlencoded({ extended: true }));
+
+// 1. Conectar a MongoDB
+// Asegúrate de tener tu URL de conexión en el archivo .env
+const connectDB = async () => {
+  try {
+    await mongoose.connect(process.env.mongodb+srv://lucasperalta470_db_user:<db_password>@rapel.vplvyfj.mongodb.net/);
+    console.log('✅ MongoDB conectado exitosamente');
+  } catch (error) {
+    console.error('❌ Error al conectar a MongoDB:', error);
+    process.exit(1); // Detener el servidor si falla la DB
+  }
+};
+
+// 2. Definir Rutas (Aún vacías, se llenarán en el siguiente paso)
+// Aquí importaremos tus controladores más adelante
+// app.use('/api/productos', require('./routes/productos'));
+
+// 3. Ruta de prueba para verificar que el servidor arrancó
+app.get('/', (req, res) => {
+  res.send('🚀 Servidor de Distribuidora Lucas iniciado. API Listo.');
+});
+
+// Iniciar servidor
+connectDB().then(() => {
+  app.listen(PORT, () => {
+    console.log(`🔥 Servidor corriendo en http://localhost:${PORT}`);
+  });
+});
