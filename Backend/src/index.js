@@ -16,13 +16,20 @@ app.use(express.urlencoded({ extended: true }));
 
 // 1. Conectar a MongoDB
 // Asegúrate de tener tu URL de conexión en el archivo .env
+
+const mongoose = require('mongoose');
+const dotenv = require('dotenv');
+
+dotenv.config(); // Esto es MUY IMPORTANTE, debe estar al inicio del archivo
+
 const connectDB = async () => {
   try {
-    await mongoose.connect(process.env.mongodb+mongodb://atlas-sql-69fa2c7ef58cf23d348d0312-rafwae.a.query.mongodb.net/sample_mflix?ssl=true&authSource=admin
+    // Aquí solo llamamos a la variable que definimos en .env
+    await mongoose.connect(process.env.MONGO_URI);
     console.log('✅ MongoDB conectado exitosamente');
   } catch (error) {
     console.error('❌ Error al conectar a MongoDB:', error);
-    process.exit(1); // Detener el servidor si falla la DB
+    process.exit(1);
   }
 };
 
