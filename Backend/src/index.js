@@ -18,7 +18,7 @@ app.use(express.urlencoded({ extended: true }));
 // Asegúrate de tener tu URL de conexión en el archivo .env
 const connectDB = async () => {
   try {
-    await mongoose.connect(process.env.mongodb+srv://lucasperalta470_db_user:<db_password>@rapel.vplvyfj.mongodb.net/);
+    await mongoose.connect(process.env.mongodb+mongodb://atlas-sql-69fa2c7ef58cf23d348d0312-rafwae.a.query.mongodb.net/sample_mflix?ssl=true&authSource=admin
     console.log('✅ MongoDB conectado exitosamente');
   } catch (error) {
     console.error('❌ Error al conectar a MongoDB:', error);
