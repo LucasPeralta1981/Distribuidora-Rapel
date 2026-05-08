@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const dotenv = require('dotenv');
+const uploadRoutes = require('./routes/upload'); 
 
 // getting-started.js
 const mongoose = require('mongoose');
@@ -24,6 +25,7 @@ const PORT = process.env.PORT || 5000;
 app.use(cors()); // Permite que el Frontend hable con el Backend
 app.use(express.json()); // Para leer datos en formato JSON
 app.use(express.urlencoded({ extended: true }));
+app.use('/api/upload', uploadRoutes); // Ahora la ruta es http://localhost:5000/api/upload
 
 // 1. Conectar a MongoDB
 // Asegúrate de tener tu URL de conexión en el archivo .env
