@@ -36,7 +36,8 @@ dotenv.config(); // Esto es MUY IMPORTANTE, debe estar al inicio del archivo
 const connectDB = async () => {
   try {
     // Aquí solo llamamos a la variable que definimos en .env
-   await mongoose.connect(process.env.MONGODB_URI);
+    await mongoose.connect(process.env.MONGODB_URI);
+  } catch (error) {
     console.error('❌ Error al conectar a MongoDB:', error);
     process.exit(1);
   }
