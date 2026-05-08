@@ -3,6 +3,17 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const dotenv = require('dotenv');
 
+// getting-started.js
+const mongoose = require('mongoose');
+
+main().catch(err => console.log(err));
+
+async function main() {
+  await mongoose.connect('mongodb://127.0.0.1:27017/test');
+
+  // use `await mongoose.connect('mongodb://user:password@127.0.0.1:27017/test');` if your database has auth enabled
+}
+
 // Cargar variables de entorno (clave para seguridad)
 dotenv.config();
 
@@ -25,9 +36,7 @@ dotenv.config(); // Esto es MUY IMPORTANTE, debe estar al inicio del archivo
 const connectDB = async () => {
   try {
     // Aquí solo llamamos a la variable que definimos en .env
-    await mongoose.connect(process.env.'mongodb+srv://lucasperalta470@gmail.com:<distribuidorarapel>@rapel.vplvyfj.mongodb.net/')
-    }
-  catch (error) {
+   await mongoose.connect(process.env.MONGODB_URI);
     console.error('❌ Error al conectar a MongoDB:', error);
     process.exit(1);
   }
@@ -47,4 +56,4 @@ connectDB().then(() => {
   app.listen(PORT, () => {
     console.log(`🔥 Servidor corriendo en http://localhost:${PORT}`);
   });
-});
+})
