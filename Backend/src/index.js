@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const cors = require('cors'); // Necesitarás instalar esto también: npm install cors
 
 // Importamos las rutas (las crearemos en el siguiente paso)
-const productRoutes = require('./src/routes/productRoutes');
+const productRoutes = require('./routes/productRoutes');
 const clientRoutes = require('./routes/clientRoutes');
 
 const app = express();
