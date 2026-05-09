@@ -12,7 +12,7 @@ const ClientSchema = new mongoose.Schema({
     notificationEmail: { type: Boolean, default: true },
     notificationWhatsApp: { type: Boolean, default: false }
   },
-  balance: { type: Number, default: 0 } // Cuenta corriente
+  balance: { type: Number, default: 0 }
 }, { timestamps: true });
 
 module.exports = mongoose.model('Client', ClientSchema);
