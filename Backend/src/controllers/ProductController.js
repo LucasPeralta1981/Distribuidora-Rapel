@@ -1,4 +1,7 @@
-const Product = require('../models/Product.model');
+// Backend/src/controllers/ProductController.js
+const path = require('path');
+const Product = require(path.join(__dirname, '../models/Product.model'));
+
 const ExcelJS = require('exceljs');
 const puppeteer = require('puppeteer');
 
