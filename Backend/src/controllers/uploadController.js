@@ -1,6 +1,6 @@
 const multer = require('multer');
 const XLSX = require('xlsx');
-const Producto = require('../models/Producto');
+const Producto = require('../models/articulos');
 const path = require('path');
 
 // Configurar Multer para guardar temporalmente el archivo en disco
