@@ -9,19 +9,19 @@ const ProductSchema = new mongoose.Schema({
     enum: ['aceites', 'herramientas', 'cubiertas', 'repuestos_livianos', 'repuestos_pesados'],
     required: true 
   },
-  priceCost: { type: Number, required: true }, // Costo
-  priceSale: { type: Number, required: true }, // Venta
+  priceCost: { type: Number, required: true },
+  priceSale: { type: Number, required: true },
   stock: { type: Number, default: 0 },
-  taxRate: { type: Number, default: 21 }, // IVA
+  taxRate: { type: Number, default: 21 },
   isActive: { type: Boolean, default: true },
   providerUrl: String,
+  images: [String],
   logisticsInfo: {
     weight: Number,
     height: Number,
     width: Number,
     depth: Number
-  },
-  images: [String]
+  }
 }, { timestamps: true });
 
 module.exports = mongoose.model('Product', ProductSchema);
